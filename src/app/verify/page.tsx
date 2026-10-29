@@ -35,6 +35,7 @@ import {
   SlidersHorizontal,
   ChevronRight,
   FileText,
+  X,
 } from 'lucide-react';
 import {
   VERIFIED_BLOCKCHAIN_CERTIFICATES,
@@ -47,9 +48,9 @@ function VerifyCertificateContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const initialQuery = searchParams.get('id') || searchParams.get('hash') || 'LH-2026-SQL-98214';
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [activeCertId, setActiveCertId] = useState(initialQuery);
+  const initialCertId = searchParams.get('id') || searchParams.get('hash') || 'LH-2026-SQL-98214';
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCertId, setActiveCertId] = useState(initialCertId);
   const [isCopied, setIsCopied] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState('');
   const [activeTab, setActiveTab] = useState<'proof' | 'merkle' | 'json' | 'contract'>('proof');
@@ -80,7 +81,6 @@ function VerifyCertificateContent() {
   useEffect(() => {
     const q = searchParams.get('id') || searchParams.get('hash');
     if (q) {
-      setSearchQuery(q);
       setActiveCertId(q);
     }
   }, [searchParams]);
@@ -122,11 +122,12 @@ function VerifyCertificateContent() {
     e.preventDefault();
     if (searchQuery.trim()) {
       triggerVerificationScan(searchQuery.trim());
+    } else {
+      showToast('Please enter a Credential ID or Tx Hash to verify');
     }
   };
 
   const quickCertSelect = (id: string) => {
-    setSearchQuery(id);
     triggerVerificationScan(id);
   };
 
@@ -200,14 +201,24 @@ function VerifyCertificateContent() {
           {/* Futuristic Search Command Bar */}
           <form onSubmit={handleSearchSubmit} className="pt-2 flex flex-col sm:flex-row gap-3 max-w-3xl">
             <div className="relative flex-1 group">
-              <Search className="w-4 h-4 text-blue-400 absolute left-4 top-3.5 group-focus-within:text-emerald-400 transition-colors" />
+              <Search className="w-4 h-4 text-blue-400 absolute left-4 top-3.5 group-focus-within:text-emerald-400 transition-colors pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Enter Credential Token ID (e.g. LH-2026-SQL-98214) or Tx Hash (0x7e4b9...)..."
-                className="w-full h-12 pl-11 pr-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-mono shadow-inner"
+                placeholder="Enter Credential Token ID (e.g. LH-2026-SQL-98214) or Tx Hash (0x...)..."
+                className="w-full h-12 pl-11 pr-11 rounded-2xl bg-slate-900/90 border border-slate-700/80 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-mono shadow-inner"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3.5 top-3.5 w-5 h-5 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-all cursor-pointer"
+                  title="Clear search"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
             </div>
             <button
               type="submit"
