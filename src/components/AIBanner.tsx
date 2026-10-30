@@ -190,23 +190,27 @@ export default function AIBanner() {
                   </div>
                 </div>
 
-                {/* Message Bubble matching screenshot */}
-                <div style={{ marginBottom: "16px" }}>
-                  <div
-                    style={{
-                      backgroundColor: "#F0F4FF",
-                      borderRadius: "18px",
-                      padding: "16px 20px",
-                      color: "#1E293B",
-                      fontSize: "14px",
-                      lineHeight: "1.55",
-                    }}
-                  >
-                    Hi! I&apos;m your AI Learning Assistant. How can I help you today?
-                  </div>
-                  <span style={{ display: "block", fontSize: "11px", color: "#94A3B8", marginTop: "6px", paddingLeft: "4px" }}>
-                    Just now
-                  </span>
+                {/* Message Bubble list */}
+                <div style={{ marginBottom: "16px", maxHeight: "200px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "10px" }}>
+                  {messages.map((msg, i) => (
+                    <div key={i} style={{ alignSelf: msg.role === "user" ? "flex-end" : "flex-start", maxWidth: "88%" }}>
+                      <div
+                        style={{
+                          backgroundColor: msg.role === "user" ? "#2563EB" : "#F0F4FF",
+                          borderRadius: "18px",
+                          padding: "12px 18px",
+                          color: msg.role === "user" ? "#FFFFFF" : "#1E293B",
+                          fontSize: "14px",
+                          lineHeight: "1.55",
+                        }}
+                      >
+                        {msg.text}
+                      </div>
+                      <span style={{ display: "block", fontSize: "11px", color: "#94A3B8", marginTop: "4px", paddingLeft: "4px", textAlign: msg.role === "user" ? "right" : "left" }}>
+                        {msg.time}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Quick Chips matching screenshot */}
