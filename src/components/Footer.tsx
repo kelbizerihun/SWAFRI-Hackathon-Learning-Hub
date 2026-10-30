@@ -1,166 +1,270 @@
+"use client";
 import Link from "next/link";
+import LearningHubLogo from "./LearningHubLogo";
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        background: "#080c14",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div
-                className="flex items-center justify-center w-8 h-8 rounded-lg"
-                style={{ background: "#2563EB" }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 3L2 8l10 5 10-5-10-5zM2 16l10 5 10-5M2 12l10 5 10-5"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="font-bold text-white text-sm">Learning Hub</span>
+    <footer style={{ backgroundColor: "#0B132B", color: "#94A3B8", fontFamily: "inherit" }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "80px 32px 40px 32px" }}>
+        
+        {/* Top 4-Column Grid */}
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-16"
+          style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}
+        >
+          
+          {/* Column 1: Brand & Socials (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-6">
+            <div style={{ marginBottom: "20px" }}>
+              <LearningHubLogo size="md" textColor="#FFFFFF" />
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">
-              AI-powered learning platform helping curious minds build in-demand skills and
-              launch meaningful careers.
+
+            <p style={{ color: "#94A3B8", fontSize: "14px", lineHeight: "1.65", marginBottom: "26px", maxWidth: "320px" }}>
+              A world of learning. A future of possibilities. Build yours with us.
             </p>
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              {[
-                {
-                  label: "Twitter",
-                  path: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z",
-                },
-                {
-                  label: "LinkedIn",
-                  path: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 100-4 2 2 0 000 4z",
-                },
-                {
-                  label: "Instagram",
-                  path: "M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 6.5h11a1 1 0 011 1v11a1 1 0 01-1 1h-11a1 1 0 01-1-1v-11a1 1 0 011-1z",
-                },
-                {
-                  label: "Facebook",
-                  path: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
-                },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href="#"
-                  aria-label={s.label}
-                  className="w-8 h-8 flex items-center justify-center rounded-full transition-all"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "#2563EB";
-                    (e.currentTarget as HTMLElement).style.background = "rgba(37,99,235,0.2)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
-                  }}
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#94a3b8"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d={s.path} />
-                  </svg>
-                </a>
-              ))}
+
+            {/* Social Icons matching Figma: LinkedIn, Instagram, YouTube, Facebook */}
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              {/* 1. LinkedIn */}
+              <a
+                href="#linkedin"
+                aria-label="LinkedIn"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#94A3B8",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.68 1.68 0 1 0 0-3.36 1.68 1.68 0 0 0 0 3.36m1.39 9.74v-8.37H5.07v8.37z" />
+                </svg>
+              </a>
+
+              {/* 2. Instagram */}
+              <a
+                href="#instagram"
+                aria-label="Instagram"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#94A3B8",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeWidth="2.5" />
+                </svg>
+              </a>
+
+              {/* 3. YouTube */}
+              <a
+                href="#youtube"
+                aria-label="YouTube"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#94A3B8",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+
+              {/* 4. Facebook */}
+              <a
+                href="#facebook"
+                aria-label="Facebook"
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "10px",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#94A3B8",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-white text-sm mb-4">Platform</h4>
-            <ul className="space-y-2">
-              {["Courses", "Dashboard", "AI Chatbot", "Careers", "Events", "FAQ"].map((l) => (
-                <li key={l}>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
+          {/* Column 2: Explore (2 cols) */}
+          <div className="lg:col-span-2">
+            <h4 style={{ fontWeight: 700, color: "#FFFFFF", fontSize: "15px", marginBottom: "22px", letterSpacing: "-0.2px" }}>
+              Explore
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+              {[
+                { name: "Courses", href: "/course" },
+                { name: "Dashboard", href: "/dashboard" },
+                { name: "Careers", href: "/#careers" },
+                { name: "Events", href: "/#events" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    href={item.href} 
+                    style={{ color: "#94A3B8", textDecoration: "none", fontSize: "14px", fontWeight: 500, transition: "color 0.15s ease" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
                   >
-                    {l}
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-white text-sm mb-4">Company</h4>
-            <ul className="space-y-2">
-              {["About Us", "Contact Us", "Privacy Policy", "Terms of Service", "Blog"].map(
-                (l) => (
-                  <li key={l}>
-                    <Link
-                      href="#"
-                      className="text-sm text-slate-400 hover:text-white transition-colors"
-                    >
-                      {l}
-                    </Link>
-                  </li>
-                )
-              )}
+          {/* Column 3: Learning Hub (2 cols) */}
+          <div className="lg:col-span-2">
+            <h4 style={{ fontWeight: 700, color: "#FFFFFF", fontSize: "15px", marginBottom: "22px", letterSpacing: "-0.2px" }}>
+              Learning Hub
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+              {[
+                { name: "About Us", href: "/about" },
+                { name: "Contact Us", href: "/contact" },
+                { name: "FAQ", href: "/faq" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    href={item.href} 
+                    style={{ color: "#94A3B8", textDecoration: "none", fontSize: "14px", fontWeight: 500, transition: "color 0.15s ease" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-semibold text-white text-sm mb-1">
-              Keep your curiosity growing
+          {/* Column 4: Newsletter (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col items-start">
+            <h4 style={{ fontWeight: 700, color: "#FFFFFF", fontSize: "18px", marginBottom: "10px", letterSpacing: "-0.3px" }}>
+              Keep your curiosity growing.
             </h4>
-            <p className="text-slate-400 text-xs mb-4">
-              Get weekly curated courses, career tips, and events delivered to your inbox.
+            <p style={{ color: "#94A3B8", fontSize: "14px", lineHeight: "1.6", marginBottom: "20px" }}>
+              New courses, live events, and fresh opportunities. A little inspiration in your inbox.
             </p>
-            <div className="flex flex-col gap-2">
+
+            {/* Input & Subscribe unified pill */}
+            <form 
+              onSubmit={(e) => e.preventDefault()} 
+              style={{
+                width: "100%",
+                maxWidth: "460px",
+                backgroundColor: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "14px",
+                padding: "6px 6px 6px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginBottom: "12px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+              }}
+            >
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-2.5 rounded-lg text-sm text-white placeholder-slate-500 outline-none focus:border-blue-500"
+                placeholder="Your email address"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  flex: 1,
+                  backgroundColor: "transparent",
+                  border: "none",
+                  outline: "none",
+                  color: "#FFFFFF",
+                  fontSize: "14px",
+                  padding: "6px 0",
                 }}
               />
-              <button className="btn-primary w-full py-2.5 rounded-lg text-sm font-semibold text-white">
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#2563EB",
+                  color: "#FFFFFF",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  padding: "10px 22px",
+                  borderRadius: "10px",
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 2px 8px rgba(37,99,235,0.4)",
+                  transition: "background-color 0.15s ease",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#1D4ED8")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#2563EB")}
+              >
                 Subscribe
               </button>
-            </div>
+            </form>
+
+            <p style={{ fontSize: "12px", color: "#64748B" }}>
+              No spam. Just possibility. Unsubscribe anytime.
+            </p>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar matching Figma */}
+        <div style={{ paddingTop: "28px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "16px", fontSize: "13px", color: "#64748B" }}>
+          <div>
+            © 2026 Learning Hub. All rights reserved.
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+            <Link 
+              href="#privacy" 
+              style={{ color: "#94A3B8", textDecoration: "none", transition: "color 0.15s ease" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              href="#terms" 
+              style={{ color: "#94A3B8", textDecoration: "none", transition: "color 0.15s ease" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#FFFFFF")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div
-          className="mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-        >
-          <p className="text-xs text-slate-500">
-            © 2024 Learning Hub. All rights reserved.
-          </p>
-          <p className="text-xs text-slate-500">
-            Built with ❤️ for curious minds everywhere.
-          </p>
-        </div>
       </div>
     </footer>
   );

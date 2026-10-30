@@ -1,123 +1,235 @@
-const events = [
-  {
-    type: "Workshop",
-    typeColor: "#8B5CF6",
-    typeBg: "rgba(139,92,246,0.15)",
-    month: "NOV",
-    day: "12",
-    title: "Design your first portfolio-ready app",
-    presenter: "Sarah K. — UX Lead @ Figma",
-    time: "10:00 AM — 1:00 PM GMT",
-  },
-  {
-    type: "Webinar",
-    typeColor: "#2563EB",
-    typeBg: "rgba(37,99,235,0.15)",
-    month: "NOV",
-    day: "18",
-    title: "Your next chapter: a career in tech",
-    presenter: "David Okafor — Sr. Engineer @ Google",
-    time: "3:00 PM — 4:30 PM GMT",
-  },
-  {
-    type: "Hackathon",
-    typeColor: "#10B981",
-    typeBg: "rgba(16,185,129,0.15)",
-    month: "NOV",
-    day: "24",
-    title: "Build AI at this weekend challenge",
-    presenter: "Open to all — Hosted by Learning Hub",
-    time: "48-hour event, Nov 24–26",
-  },
-];
+"use client";
+import Link from "next/link";
 
 export default function EventsSection() {
+  const events = [
+    {
+      month: "NOV",
+      day: "12",
+      dateColor: "#7C3AED",
+      dateBg: "#FAF5FF",
+      tag: "Workshop",
+      tagBg: "#F3E8FF",
+      tagColor: "#7C3AED",
+      title: "Design your first portfolio-ready app",
+      speaker: "With Sarah Chen · Product Designer",
+      details: "Online · 4:00 PM UTC · 90 min",
+      info: "Free · 42 spots left",
+    },
+    {
+      month: "NOV",
+      day: "18",
+      dateColor: "#2563EB",
+      dateBg: "#EFF6FF",
+      tag: "Webinar",
+      tagBg: "#EFF6FF",
+      tagColor: "#2563EB",
+      title: "Your next chapter: a career in tech",
+      speaker: "With Daniel Brooks · Career Coach",
+      details: "Online · 6:00 PM UTC · 60 min",
+      info: "Free · Open to everyone",
+    },
+    {
+      month: "NOV",
+      day: "24",
+      dateColor: "#059669",
+      dateBg: "#ECFDF5",
+      tag: "Hackathon",
+      tagBg: "#ECFDF5",
+      tagColor: "#059669",
+      title: "Build with AI: the weekend challenge",
+      speaker: "Hosted by the Learning Hub community",
+      details: "Online · 10:00 AM UTC · 48 hours",
+      info: "Free · Teams welcome",
+    },
+  ];
+
   return (
-    <section className="py-20" style={{ background: "#0d1120" }}>
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+    <section id="events" style={{ backgroundColor: "#FFFFFF", padding: "100px 0", borderTop: "1px solid #F1F5F9" }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+        
+        {/* Section Header */}
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "44px", flexWrap: "wrap", gap: "16px" }}>
           <div>
-            <div className="section-tag mb-4 w-fit">📅 EVENTS & WORKSHOPS</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            {/* Tag matching screenshot: PUT SOMETHING GOOD ON YOUR CALENDAR */}
+            <div 
+              style={{ 
+                fontSize: "12px", 
+                fontWeight: 800, 
+                color: "#2563EB", 
+                letterSpacing: "0.8px", 
+                textTransform: "uppercase", 
+                marginBottom: "14px" 
+              }}
+            >
+              PUT SOMETHING GOOD ON YOUR CALENDAR
+            </div>
+
+            <h2 
+              style={{ 
+                fontSize: "clamp(34px, 4vw, 44px)", 
+                fontWeight: 900, 
+                color: "#0F172A", 
+                letterSpacing: "-1.2px", 
+                lineHeight: "1.15", 
+                marginBottom: "10px" 
+              }}
+            >
               Learn together. Go further.
             </h2>
-            <p className="text-slate-400">
-              Live sessions with industry experts to accelerate your growth.
+
+            <p style={{ color: "#64748B", fontSize: "16px", lineHeight: "1.5" }}>
+              Fresh ideas, real connections, and a community that cheers you on.
             </p>
           </div>
-          <button className="flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors">
-            View all events
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 12h14M12 5l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+
+          <Link
+            href="/register"
+            style={{ 
+              display: "inline-flex", 
+              alignItems: "center", 
+              gap: "8px", 
+              fontSize: "15px", 
+              fontWeight: 700, 
+              color: "#2563EB", 
+              textDecoration: "none",
+              transition: "color 0.15s ease" 
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#1D4ED8")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#2563EB")}
+          >
+            <span>View all events</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </button>
+          </Link>
         </div>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {events.map((event) => (
+        {/* 3 Columns Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {events.map((item) => (
             <div
-              key={event.title}
-              className="feature-card rounded-2xl p-6 flex flex-col gap-4 group cursor-pointer"
+              key={item.title}
+              style={{
+                backgroundColor: "#FFFFFF",
+                border: "1px solid #EEF2F6",
+                borderRadius: "24px",
+                padding: "26px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "290px",
+                transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+              className="group hover:border-slate-300 hover:shadow-lg hover:shadow-slate-200/50"
             >
-              {/* Type badge */}
-              <span
-                className="inline-block px-3 py-1 rounded-full text-xs font-semibold w-fit"
-                style={{
-                  background: event.typeBg,
-                  color: event.typeColor,
-                  border: `1px solid ${event.typeColor}30`,
-                }}
-              >
-                {event.type}
-              </span>
+              <div>
+                {/* Top Row: Date Box on Left, Tag on Right */}
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "22px" }}>
+                  <div
+                    style={{
+                      width: "56px",
+                      height: "62px",
+                      borderRadius: "14px",
+                      backgroundColor: item.dateBg,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: item.dateColor,
+                      flexShrink: 0,
+                    }}
+                  >
+                    <span style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "0.6px", lineHeight: 1 }}>
+                      {item.month}
+                    </span>
+                    <span style={{ fontSize: "24px", fontWeight: 900, lineHeight: 1, marginTop: "4px" }}>
+                      {item.day}
+                    </span>
+                  </div>
 
-              {/* Date + Info */}
-              <div className="flex items-start gap-4">
-                <div className="event-date-badge flex-shrink-0">
-                  <div className="text-xs text-blue-300 font-medium">{event.month}</div>
-                  <div className="text-white font-bold text-xl leading-none">{event.day}</div>
+                  <span
+                    style={{
+                      backgroundColor: item.tagBg,
+                      color: item.tagColor,
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      padding: "5px 14px",
+                      borderRadius: "9999px",
+                      display: "inline-block",
+                    }}
+                  >
+                    {item.tag}
+                  </span>
                 </div>
-                <div>
-                  <h3 className="text-white font-semibold text-sm leading-snug mb-1">
-                    {event.title}
-                  </h3>
-                  <p className="text-slate-400 text-xs">{event.presenter}</p>
+
+                {/* Event Title */}
+                <h3 
+                  style={{ 
+                    fontSize: "18px", 
+                    fontWeight: 800, 
+                    color: "#0F172A", 
+                    letterSpacing: "-0.3px", 
+                    lineHeight: "1.3", 
+                    marginBottom: "8px" 
+                  }}
+                  className="group-hover:text-blue-600 transition-colors"
+                >
+                  {item.title}
+                </h3>
+
+                {/* Speaker / Host */}
+                <p style={{ fontSize: "13px", color: "#64748B", marginBottom: "10px", fontWeight: 400 }}>
+                  {item.speaker}
+                </p>
+
+                {/* Details row with video camera icon */}
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#64748B", marginBottom: "22px" }}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <polygon points="23 7 16 12 23 17 23 7" />
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                  </svg>
+                  <span>{item.details}</span>
                 </div>
               </div>
 
-              {/* Time */}
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" stroke="#64748b" strokeWidth="2" />
-                  <path d="M12 6v6l4 2" stroke="#64748b" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-                {event.time}
+              {/* Bottom Row: Free/spots on left, White outline 'Register →' button on right */}
+              <div style={{ paddingTop: "18px", borderTop: "1px solid #F1F5F9", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <span style={{ fontSize: "13px", color: "#64748B", fontWeight: 400 }}>
+                  {item.info}
+                </span>
+
+                <Link
+                  href="/register"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    backgroundColor: "#FFFFFF",
+                    border: "1px solid #E2E8F0",
+                    borderRadius: "12px",
+                    padding: "8px 18px",
+                    color: "#2563EB",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                    transition: "all 0.15s ease",
+                  }}
+                  className="hover:border-blue-400 hover:bg-blue-50/50"
+                >
+                  <span>Register</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
 
-              {/* Register button */}
-              <button className="flex items-center gap-1 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors mt-auto">
-                Register
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M5 12h14M12 5l7 7-7 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

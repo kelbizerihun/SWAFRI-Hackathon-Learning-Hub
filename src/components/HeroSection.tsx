@@ -1,189 +1,336 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0B0F19 0%, #0d1424 50%, #0B0F19 100%)" }}
+      style={{
+        backgroundColor: "#FFFFFF",
+        paddingTop: "60px",
+        paddingBottom: "80px",
+        overflow: "hidden",
+        position: "relative",
+      }}
     >
-      {/* Background glow orbs */}
       <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)",
-          filter: "blur(40px)",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 32px",
         }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(0,240,255,0.08) 0%, transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center py-16">
-          {/* Left Content */}
-          <div className="animate-fade-in-up">
-            {/* Tag badge */}
-            <div className="section-tag mb-6 w-fit">
-              <span>✨</span>
-              <span>BIG AMBITIONS. YOUR NEXT STEP.</span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              className="font-black leading-tight mb-6"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)", lineHeight: "1.12" }}
-            >
-              Learn New Skills.{" "}
-              <br />
-              Build Your Future{" "}
-              <span className="gradient-text">Today!</span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-lg">
-              Access high-quality courses, AI-powered learning paths, and real career
-              opportunities — all in one place. Start your journey and transform your ambitions
-              into achievements.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 mb-10">
-              <button className="btn-primary flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-white">
-                Start E-Learning
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M5 12h14M12 5l7 7-7 7"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button className="btn-outline flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-white">
-                Explore Courses
-              </button>
-            </div>
-
-            {/* Community */}
-            <div className="flex items-center gap-4">
-              {/* Avatars */}
-              <div className="flex -space-x-3">
-                {["#8B5CF6", "#2563EB", "#059669", "#DC2626", "#D97706"].map((color, i) => (
-                  <div
-                    key={i}
-                    className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white border-2"
-                    style={{
-                      background: color,
-                      borderColor: "#0B0F19",
-                      zIndex: 5 - i,
-                    }}
-                  >
-                    {["A", "B", "C", "D", "E"][i]}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1 mb-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="star">★</span>
-                  ))}
-                  <span className="text-white font-semibold text-sm ml-1">4.9/5</span>
-                </div>
-                <p className="text-slate-400 text-xs">
-                  from our community — Join{" "}
-                  <span className="text-white font-medium">10,000+ curious minds</span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Illustration card */}
-          <div className="relative flex justify-center lg:justify-end">
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          
+          {/* Left Column (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-4">
+            
+            {/* Pill Tag matching screenshot */}
             <div
-              className="relative rounded-3xl overflow-hidden w-full max-w-lg"
               style={{
-                background: "linear-gradient(135deg, #1a1f35, #131929)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 32px 80px rgba(0,0,0,0.5)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                backgroundColor: "#FFFFFF",
+                border: "1px solid #E0E7FF",
+                borderRadius: "9999px",
+                padding: "6px 16px",
+                marginBottom: "24px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
               }}
             >
-              {/* Illustration image — user will drop their image in /public/hero.png */}
-              <div
-                className="w-full aspect-square relative flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 100%)" }}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#4F46E5">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+              </svg>
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  color: "#4F46E5",
+                  letterSpacing: "0.6px",
+                  textTransform: "uppercase",
+                }}
               >
-                <Image
-                  src="/images/hero.png"
-                  alt="AI-powered learning illustration"
-                  fill
-                  className="object-cover"
-                  priority
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                BIG AMBITIONS. YOUR NEXT STEP.
+              </span>
+            </div>
+
+            {/* Main Headline matching screenshot exact sizing, colors and punctuation */}
+            <h1
+              style={{
+                fontSize: "clamp(44px, 4.8vw, 64px)",
+                fontWeight: 900,
+                lineHeight: "1.08",
+                letterSpacing: "-1.8px",
+                marginBottom: "22px",
+                color: "#0F172A",
+              }}
+            >
+              Learn New Skills. <br />
+              <span style={{ color: "#2563EB" }}>Build Your Future.</span>
+            </h1>
+
+            {/* Subtitle matching screenshot */}
+            <p
+              style={{
+                color: "#64748B",
+                fontSize: "17px",
+                lineHeight: "1.6",
+                maxWidth: "490px",
+                marginBottom: "34px",
+                fontWeight: 400,
+              }}
+            >
+              Access high-quality courses, AI-powered learning, career opportunities, and live events in one platform.
+            </p>
+
+            {/* Action Buttons Row */}
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "14px", marginBottom: "34px" }}>
+              <Link
+                href="/course"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  backgroundColor: "#2563EB",
+                  color: "#FFFFFF",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  padding: "13px 26px",
+                  borderRadius: "12px",
+                  textDecoration: "none",
+                  boxShadow: "0 4px 14px rgba(37,99,235,0.28)",
+                  transition: "all 0.15s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#1D4ED8")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#2563EB")}
+              >
+                <span>Start E-Learning</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+
+              <Link
+                href="/course"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#FFFFFF",
+                  color: "#2563EB",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  padding: "13px 26px",
+                  borderRadius: "12px",
+                  textDecoration: "none",
+                  border: "1px solid #E2E8F0",
+                  transition: "all 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#93C5FD";
+                  e.currentTarget.style.backgroundColor = "#F8FAFC";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "#E2E8F0";
+                  e.currentTarget.style.backgroundColor = "#FFFFFF";
+                }}
+              >
+                Explore Courses
+              </Link>
+            </div>
+
+            {/* Community Rating & Social Proof matching screenshot */}
+            <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+              {/* Overlapping Avatars */}
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    backgroundColor: "#E0E7FF",
+                    color: "#4338CA",
+                    border: "2px solid #FFFFFF",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
-                />
-                {/* Fallback content when no image */}
-                <div className="relative z-10 text-center p-8">
-                  <div className="text-7xl mb-4">🎓</div>
-                  <p className="text-slate-300 text-sm">Drop hero.png in /public/images/</p>
+                >
+                  AL
+                </div>
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    backgroundColor: "#EDE9FE",
+                    color: "#6D28D9",
+                    border: "2px solid #FFFFFF",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "-10px",
+                  }}
+                >
+                  JM
+                </div>
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    backgroundColor: "#D1FAE5",
+                    color: "#065F46",
+                    border: "2px solid #FFFFFF",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "-10px",
+                  }}
+                >
+                  SK
                 </div>
               </div>
 
-              {/* AI-powered badge */}
+              {/* Rating Text */}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <div style={{ color: "#F59E0B", fontSize: "13px", letterSpacing: "1px" }}>
+                    {"★".repeat(5)}
+                  </div>
+                  <span style={{ fontSize: "12px", fontWeight: 700, color: "#0F172A" }}>
+                    4.9/5 from our community
+                  </span>
+                </div>
+                <span style={{ fontSize: "11px", color: "#64748B", marginTop: "2px" }}>
+                  Join 10,000+ curious minds learning every day
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column (5 cols) Illustration Card matching screenshot */}
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "540px",
+                backgroundColor: "#ECE8FE",
+                borderRadius: "32px",
+                padding: "20px 20px 24px 20px",
+                boxShadow: "0 20px 40px -15px rgba(124, 58, 237, 0.08)",
+                overflow: "hidden",
+              }}
+            >
+              
+              {/* Top Right Floating Badge: AI-powered learning */}
               <div
-                className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 rounded-full"
                 style={{
-                  background: "rgba(0,240,255,0.1)",
-                  border: "1px solid rgba(0,240,255,0.3)",
+                  position: "absolute",
+                  top: "22px",
+                  right: "22px",
+                  zIndex: 20,
+                  backgroundColor: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(8px)",
+                  borderRadius: "9999px",
+                  padding: "7px 16px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.04)",
                 }}
               >
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-xs font-medium" style={{ color: "#00F0FF" }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#7C3AED">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                </svg>
+                <span style={{ fontSize: "12px", fontWeight: 700, color: "#6D28D9" }}>
                   AI-powered learning
                 </span>
               </div>
 
-              {/* Floating stat card */}
+              {/* 3D Illustration Image */}
               <div
-                className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl"
                 style={{
-                  background: "rgba(11,15,25,0.9)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(12px)",
+                  width: "100%",
+                  aspectRatio: "4/3",
+                  borderRadius: "22px",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "8px 0 12px 0",
                 }}
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs text-slate-400">Active learners</p>
-                    <p className="text-white font-bold text-lg">10,000+</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-slate-400">Completion rate</p>
-                    <p className="font-bold text-lg" style={{ color: "#00F0FF" }}>95%</p>
-                  </div>
-                  <div className="text-2xl animate-float">🚀</div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/hero.png"
+                  alt="Students learning with AI assistant"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "22px",
+                  }}
+                />
+              </div>
+
+              {/* Bottom Left Floating Badge: A little progress. A big future. */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "22px",
+                  left: "22px",
+                  zIndex: 20,
+                  backgroundColor: "rgba(255, 255, 255, 0.98)",
+                  backdropFilter: "blur(8px)",
+                  borderRadius: "16px",
+                  padding: "10px 18px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  boxShadow: "0 10px 25px -5px rgba(0,0,0,0.08)",
+                  border: "1px solid rgba(241, 245, 249, 0.9)",
+                }}
+              >
+                <div
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "10px",
+                    backgroundColor: "#ECFDF5",
+                    border: "1px solid #A7F3D0",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#059669",
+                    flexShrink: 0,
+                  }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ fontSize: "12px", fontWeight: 700, color: "#0F172A", lineHeight: 1.2 }}>
+                    A little progress. A big future.
+                  </span>
+                  <span style={{ fontSize: "11px", color: "#64748B", fontWeight: 500, lineHeight: 1.2, marginTop: "2px" }}>
+                    Learn at your pace. Earn real skills.
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* Floating badge top-left */}
-            <div
-              className="absolute -top-4 -left-4 px-3 py-2 rounded-xl animate-float"
-              style={{
-                background: "rgba(37,99,235,0.9)",
-                border: "1px solid rgba(37,99,235,0.6)",
-                animationDelay: "0.5s",
-              }}
-            >
-              <p className="text-white text-xs font-semibold">500+ Courses</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
